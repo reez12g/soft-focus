@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  nuxt:
+    build:
+      context: .
+      dockerfile: docker/local/Dockerfile
+    environment:
+      - NODE_OPTIONS=--openssl-legacy-provider --max-old-space-size=8192
+    command: >
+      bash -c "yarn &&
+      yarn dev"
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
